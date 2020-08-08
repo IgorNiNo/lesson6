@@ -2,25 +2,19 @@ package lesson6.animals;
 
 public class Dog extends Animal {
 
+    static private int animalCount;
+
+    static {
+        animalCount = 0;
+    }
+
     public Dog(String name) {
-        super(name);
+        super("Собака", name, 500, 10);
+        animalCount++;
     }
 
-    @Override
-    public void run(int length) {
-        if(length > 500) {
-            System.out.println( "Собака " + name + " не может пробежать " + length + " метров");
-        } else {
-            System.out.println( "Собака " + name + " пробежала " + length + " метров");
-        }
+    public static int getAnimalCount() {
+        return animalCount;
     }
 
-    @Override
-    public void swim(int length) {
-        if(length > 10) {
-            System.out.println( "Собака " + name + " не может проплыть " + length + " метров");
-        } else {
-            System.out.println( "Собака " + name + " проплыла " + length + " метров");
-        }
-    }
 }

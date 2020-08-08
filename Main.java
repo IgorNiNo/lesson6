@@ -18,13 +18,10 @@ public class Main {
         int dogName;
         int numberAnimals;
         int typeOfAnimal;
-        int numberCat = 0;
-        int numberDog = 0;
         int distanceRun;
         int distanceSwim;
 
         numberAnimals = random.nextInt(10);
-        System.out.println("Количество животных: " + numberAnimals);
         Animal[] animals = new Animal[numberAnimals];
         for (int i = 0; i < numberAnimals; i++) {
             typeOfAnimal = random.nextInt(2);
@@ -35,27 +32,18 @@ public class Main {
                 catName = random.nextInt(nameOfCat.length);
                 animals[i] = new Cat(nameOfCat[catName]);
             }
-            animals[i].info();
         }
-        System.out.println();
 
         for (int i = 0; i < numberAnimals; i++) {
-            //делаю отдельно два условия специально, чтобы проверить принадлежность к конкретному классу животного
-            //также не стал в предыдущем цикле считать количество разных животных, чтобы проверить работу instanceof
             distanceRun = random.nextInt(800);
             distanceSwim = random.nextInt(20);
             animals[i].run(distanceRun);
             animals[i].swim(distanceSwim);
-            if( animals[i] instanceof Dog ) {
-                numberDog++;
-            }
-            if( animals[i] instanceof Cat ) {
-                numberCat++;
-            }
         }
         System.out.println();
-        System.out.println("Собак всего: " + numberDog);
-        System.out.println("Кошек всего: " + numberCat);
+        System.out.println("Животных всего: " + Animal.getAnimalCount());
+        System.out.println("Собак всего: " + Dog.getAnimalCount());
+        System.out.println("Кошек всего: " + Cat.getAnimalCount());
 
     }
 }

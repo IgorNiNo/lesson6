@@ -2,21 +2,19 @@ package lesson6.animals;
 
 public class Cat extends Animal {
 
+    private static int animalCount;
+
+    static {
+        animalCount = 0;
+    }
+
     public Cat(String name) {
-        super(name);
+        super("Кот", name, 200, 0);
+        animalCount++;
     }
 
-    @Override
-    public void run(int length) {
-        if(length > 200) {
-            System.out.println( "Кот " + name + " не может пробежать " + length + " метров");
-        } else {
-            System.out.println( "Кот " + name + " пробежал " + length + " метров");
-        }
+    public static int getAnimalCount() {
+        return animalCount;
     }
 
-    @Override
-    public void swim(int length) {
-        System.out.println( "Кот " + name + " не умеет плавать!!");
-    }
 }
